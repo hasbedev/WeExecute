@@ -1,5 +1,6 @@
 .mnt-wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #050505;
   position: relative;
   overflow: hidden;
@@ -131,4 +132,5 @@
     background-size: 28px 28px;
   }
 }
+
 
