@@ -5,9 +5,18 @@ import SearchBar from './components/search/SearchBar'
 import FilterTabs from './components/filters/FilterTabs'
 import ExecutorGrid from './components/executors/ExecutorGrid'
 import Footer from './components/layout/Footer'
+import Maintenance from './components/layout/Maintenance'
 import { executorsData } from './data/executorsData'
 
+// 🔧 tinggal ubah true / false
+const MAINTENANCE_MODE = false
+
 function App() {
+  // ⛔ langsung hentikan render normal kalau maintenance
+  if (MAINTENANCE_MODE) {
+    return <Maintenance />
+  }
+
   const [executors, setExecutors] = useState(executorsData)
   const [filteredExecutors, setFilteredExecutors] = useState(executorsData)
   const [searchQuery, setSearchQuery] = useState('')
@@ -20,7 +29,6 @@ function App() {
   const filterExecutors = () => {
     let filtered = [...executors]
 
-    // Apply status filter
     if (activeFilter !== 'all') {
       if (activeFilter === 'working') {
         filtered = filtered.filter(e => e.status === 'working')
@@ -29,12 +37,12 @@ function App() {
       } else if (activeFilter === 'keySystem') {
         filtered = filtered.filter(e => e.keySystem)
       } else {
-        // Platform filters
-        filtered = filtered.filter(e => e.platform.toLowerCase() === activeFilter)
+        filtered = filtered.filter(
+          e => e.platform.toLowerCase() === activeFilter
+        )
       }
     }
 
-    // Apply search filter
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter(e =>
@@ -52,13 +60,13 @@ function App() {
       <Hero />
       <main className="main-content">
         <div className="container">
-          <SearchBar 
-            searchQuery={searchQuery} 
-            setSearchQuery={setSearchQuery} 
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
-          <FilterTabs 
-            activeFilter={activeFilter} 
-            setActiveFilter={setActiveFilter} 
+          <FilterTabs
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
           />
           <ExecutorGrid executors={filteredExecutors} />
         </div>
