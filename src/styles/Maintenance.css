@@ -1,13 +1,7 @@
 .mnt-wrapper {
   min-height: 100vh;
-  min-height: 100dvh;
-  min-height: -webkit-fill-available; /* ← ADD THIS for iOS Safari */
   background: #050505;
-  position: fixed; /* ← CHANGE from relative to fixed */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -17,7 +11,7 @@
 
 /* grid futuristic */
 .mnt-bg-grid {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image:
     linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
@@ -37,8 +31,6 @@
   text-align: center;
   padding: 40px;
   animation: fadeUp .9s ease forwards;
-  max-width: 100%;
-  width: 100%;
 }
 
 /* LOGO MODERN */
@@ -46,7 +38,7 @@
   width: 140px;
   margin-bottom: 24px;
   filter: drop-shadow(0 0 40px rgba(0,255,140,.15));
-  /* animation: float 6s ease-in-out infinite; */
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -58,7 +50,6 @@
   font-size: 28px;
   font-weight: 600;
   letter-spacing: .4px;
-  color: #ffffff;
 }
 
 .mnt-content p {
@@ -119,42 +110,24 @@
   }
 }
 
-/* Mobile specific fixes */
 @media (max-width: 480px) {
-  .mnt-wrapper {
-    /* Fix for mobile browsers with dynamic viewport */
-    height: 100vh;
-    height: 100dvh;
-    height: -webkit-fill-available;
-  }
-  
   .mnt-content {
     padding: 24px;
   }
-  
+
   .mnt-logo {
     width: 110px;
   }
-  
+
   .mnt-content h1 {
     font-size: 22px;
   }
-  
+
   .mnt-content p {
     font-size: 13px;
   }
-  
+
   .mnt-bg-grid {
     background-size: 28px 28px;
   }
-}
-
-/* Additional body/html fix */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #050505;
 }
