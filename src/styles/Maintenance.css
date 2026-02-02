@@ -12,7 +12,7 @@
 
 /* grid futuristic */
 .mnt-bg-grid {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image:
     linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
@@ -132,5 +132,6 @@
     background-size: 28px 28px;
   }
 }
+
 
 
