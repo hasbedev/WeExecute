@@ -1,75 +1,59 @@
-/* ===== GLOBAL RESET ===== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background: #050505;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-}
-
-/* ===== MAIN WRAPPER ===== */
 .mnt-wrapper {
   min-height: 100vh;
   min-height: 100dvh;
-  min-height: -webkit-fill-available;
-
+  min-height: -webkit-fill-available; /* ← ADD THIS for iOS Safari */
   background: #050505;
-  position: relative;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-
+  position: fixed; /* ← CHANGE from relative to fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
   display: flex;
   justify-content: center;
-
-  padding: 40px 0;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
 }
 
-/* ===== BACKGROUND GRID ===== */
+/* grid futuristic */
 .mnt-bg-grid {
   position: fixed;
   inset: 0;
-  z-index: 0;
-
   background-image:
     linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size: 40px 40px;
-
   animation: gridMove 20s linear infinite;
 }
 
 @keyframes gridMove {
   from { background-position: 0 0 }
-  to   { background-position: 200px 200px }
+  to { background-position: 200px 200px }
 }
 
-/* ===== CONTENT (TRUE CENTER) ===== */
 .mnt-content {
   position: relative;
   z-index: 2;
-
-  margin: auto; /* 🔥 KUNCI CENTER */
-
   text-align: center;
   padding: 40px;
-  width: 100%;
-  max-width: 480px;
-
   animation: fadeUp .9s ease forwards;
+  max-width: 100%;
+  width: 100%;
 }
 
-/* ===== LOGO ===== */
+/* LOGO MODERN */
 .mnt-logo {
   width: 140px;
   margin-bottom: 24px;
   filter: drop-shadow(0 0 40px rgba(0,255,140,.15));
-
-  animation: none !important;
-  transform: none !important;
+  /* animation: float 6s ease-in-out infinite; */
 }
 
-/* ===== TEXT ===== */
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+
 .mnt-content h1 {
   font-size: 28px;
   font-weight: 600;
@@ -84,16 +68,14 @@ html, body {
   line-height: 1.6;
 }
 
-/* ===== STATUS ===== */
+/* status text */
 .mnt-status {
   margin-top: 26px;
   font-size: 13px;
   color: #00ff8c;
-
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   letter-spacing: .8px;
 }
 
@@ -102,16 +84,10 @@ html, body {
   height: 7px;
   background: #00ff8c;
   border-radius: 50%;
-
   animation: blink 1.4s infinite;
 }
 
-@keyframes blink {
-  0%,100% { opacity: .25 }
-  50%     { opacity: 1 }
-}
-
-/* ===== STATUS TEXT FADE ===== */
+/* fade text */
 .mnt-status-text {
   transition: opacity .4s ease, transform .4s ease;
 }
@@ -126,7 +102,12 @@ html, body {
   transform: translateY(4px);
 }
 
-/* ===== ENTRANCE ===== */
+@keyframes blink {
+  0%,100% { opacity: .25 }
+  50% { opacity: 1 }
+}
+
+/* entrance */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -138,25 +119,42 @@ html, body {
   }
 }
 
-/* ===== MOBILE ===== */
+/* Mobile specific fixes */
 @media (max-width: 480px) {
+  .mnt-wrapper {
+    /* Fix for mobile browsers with dynamic viewport */
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+  }
+  
   .mnt-content {
     padding: 24px;
   }
-
+  
   .mnt-logo {
     width: 110px;
   }
-
+  
   .mnt-content h1 {
     font-size: 22px;
   }
-
+  
   .mnt-content p {
     font-size: 13px;
   }
-
+  
   .mnt-bg-grid {
     background-size: 28px 28px;
   }
+}
+
+/* Additional body/html fix */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050505;
 }
