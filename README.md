@@ -89,6 +89,9 @@ Edit file `src/data/executorsData.js`:
   platform: "windows", // windows, android, atau ios
   keySystem: false,
   version: "1.0.0",
+  robloxVersion: "version-db4634f0e27d4d36",
+  sunc: ,
+  unc: ,
   lastUpdate: "1 hour ago",
   description: "Your description here",
   downloadUrl: "#",

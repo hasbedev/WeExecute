@@ -104,7 +104,35 @@ body {
 }
 
 .logo-icon {
-  font-size: 1.75rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.logo:hover .logo-icon {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: scale(1.05);
+}
+
+/* Logo Image */
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .logo-highlight {
@@ -562,6 +590,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  z-index: 10;
 }
 
 .status-working {
@@ -590,24 +619,72 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  padding-right: 80px;
+  padding-right: 100px;
 }
 
+/* Card Icon - UPDATED FOR IMAGE SUPPORT */
 .card-icon {
-  font-size: 2.5rem;
+  min-width: 60px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  transition: var(--transition);
+  position: relative;
+}
+
+.executor-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25));
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Image Logo */
+.executor-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.executor-card:hover .executor-logo {
+  transform: scale(1.05);
+}
+
+/* Emoji Fallback */
+.executor-emoji {
+  font-size: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Loading state for images */
+.executor-logo.loading {
+  opacity: 0.5;
+  filter: blur(4px);
 }
 
 .card-title-section {
   flex: 1;
+  min-width: 0;
 }
 
 .card-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-meta {
@@ -615,6 +692,7 @@ body {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .meta-item {
@@ -647,6 +725,86 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1.25rem;
+}
+
+/* Info Grid 3 Columns */
+.card-info-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info-item-full {
+  grid-column: 1 / -1;
+}
+
+.info-value-small {
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* SUNC & UNC Compatibility Grid */
+.compatibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background: rgba(6, 14, 39, 0.6);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.compat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(17, 24, 39, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(71, 85, 105, 0.2);
+  transition: var(--transition);
+}
+
+.compat-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.compat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.compat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-info-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-item-full {
+    grid-column: auto;
+  }
+  
+  .compat-value {
+    font-size: 1.25rem;
+  }
 }
 
 .info-item {
@@ -716,6 +874,17 @@ body {
   color: var(--primary);
   border-color: var(--primary);
   background: rgba(59, 130, 246, 0.1);
+}
+
+/* Discord Icon Styling */
+.btn-secondary .fa-discord {
+  font-size: 1.25rem;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover .fa-discord {
+  transform: scale(1.1);
+  color: #5865f2; /* Discord brand color */
 }
 
 /* ===================================
@@ -964,6 +1133,7 @@ body {
 
   .card-header {
     padding-right: 0;
+    flex-wrap: wrap;
   }
 
   .status-badge {
@@ -972,6 +1142,16 @@ body {
     right: auto;
     margin-bottom: 1rem;
     align-self: flex-start;
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+
+  .executor-emoji {
+    font-size: 1.75rem;
   }
 }
 
@@ -1000,3 +1180,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
 }
+

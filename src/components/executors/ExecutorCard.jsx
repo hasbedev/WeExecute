@@ -1,7 +1,21 @@
-import { Download, MessageCircle, Monitor, Smartphone, Apple, Key, Clock } from 'lucide-react'
+import { Download, Monitor, Smartphone, Apple, Key, Clock } from 'lucide-react'
 
 const ExecutorCard = ({ executor }) => {
-  const { name, icon, status, platform, keySystem, version, lastUpdate, description, downloadUrl, discordUrl } = executor
+  const { 
+    name, 
+    icon, 
+    status, 
+    platform, 
+    keySystem, 
+    version, 
+    robloxVersion, // ← ADD THIS
+    sunc, // ← ADD THIS
+    unc, // ← ADD THIS
+    lastUpdate, 
+    description, 
+    downloadUrl, 
+    discordUrl 
+  } = executor
 
   const getPlatformIcon = () => {
     switch(platform) {
@@ -16,6 +30,23 @@ const ExecutorCard = ({ executor }) => {
     return status === 'working' ? 'status-working' : 'status-patched'
   }
 
+  const renderIcon = () => {
+    if (icon.includes('.png') || icon.includes('.jpg') || icon.includes('.svg') || icon.includes('.webp')) {
+      return (
+        <img 
+          src={icon} 
+          alt={`${name} logo`}
+          className="executor-logo"
+          onError={(e) => {
+            e.target.style.display = 'none'
+            e.target.nextSibling.style.display = 'flex'
+          }}
+        />
+      )
+    }
+    return <span className="executor-emoji">{icon}</span>
+  }
+
   return (
     <div className="executor-card">
       {/* Status Badge */}
@@ -26,7 +57,12 @@ const ExecutorCard = ({ executor }) => {
 
       {/* Header */}
       <div className="card-header">
-        <div className="card-icon">{icon}</div>
+        <div className="card-icon">
+          {renderIcon()}
+          <span className="executor-emoji" style={{ display: 'none' }}>
+            {icon.includes('.') ? '🎮' : ''}
+          </span>
+        </div>
         <div className="card-title-section">
           <h3 className="card-title">{name}</h3>
           <div className="card-meta">
@@ -47,8 +83,8 @@ const ExecutorCard = ({ executor }) => {
       {/* Description */}
       <p className="card-description">{description}</p>
 
-      {/* Info Grid */}
-      <div className="card-info-grid">
+      {/* Info Grid - UPDATED */}
+      <div className="card-info-grid-3">
         <div className="info-item">
           <span className="info-label">Version</span>
           <span className="info-value">{version}</span>
@@ -60,6 +96,22 @@ const ExecutorCard = ({ executor }) => {
           </span>
           <span className="info-value">{lastUpdate}</span>
         </div>
+        <div className="info-item info-item-full">
+          <span className="info-label">Roblox Version</span>
+          <span className="info-value info-value-small">{robloxVersion}</span>
+        </div>
+      </div>
+
+      {/* SUNC & UNC - NEW SECTION */}
+      <div className="compatibility-grid">
+        <div className="compat-item">
+          <span className="compat-label">SUNC</span>
+          <span className="compat-value">{sunc}%</span>
+        </div>
+        <div className="compat-item">
+          <span className="compat-label">UNC</span>
+          <span className="compat-value">{unc}%</span>
+        </div>
       </div>
 
       {/* Actions */}
@@ -67,10 +119,8 @@ const ExecutorCard = ({ executor }) => {
         <a 
           href={downloadUrl} 
           className="btn btn-primary"
-          onClick={(e) => {
-            e.preventDefault()
-            alert(`Downloading ${name}...`)
-          }}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <Download size={16} />
           <span>Download</span>
@@ -78,12 +128,11 @@ const ExecutorCard = ({ executor }) => {
         <a 
           href={discordUrl} 
           className="btn btn-secondary"
-          onClick={(e) => {
-            e.preventDefault()
-            alert(`Opening Discord for ${name}...`)
-          }}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Join Discord Server"
         >
-          <MessageCircle size={16} />
+          <i className="fa-brands fa-discord"></i>
         </a>
       </div>
     </div>
