@@ -18,7 +18,7 @@ export const executorsData = [
   {
     id: 2,
     name: "Bunni.fun",
-    icon: "/src/icons/bunni-icon.png",
+    icon: "/icons/bunni-icon.png",
     status: "working",
     platform: "windows",
     keySystem: false,
@@ -34,7 +34,7 @@ export const executorsData = [
   {
     id: 3,
     name: "Velocity",
-    icon: "/src/icons/velocity-icon.png",
+    icon: "/icons/velocity-icon.png",
     status: "working",
     platform: "windows",
     keySystem: false,
@@ -50,7 +50,7 @@ export const executorsData = [
   {
     id: 4,
     name: "Xeno",
-    icon: "/src/icons/xeno-icon.jpg",
+    icon: "/icons/xeno-icon.jpg",
     status: "working",
     platform: "windows",
     keySystem: false,
@@ -66,7 +66,7 @@ export const executorsData = [
   {
     id: 5,
     name: "Ronix",
-    icon: "/src/icons/ronix-icon.png",
+    icon: "/icons/ronix-icon.png",
     status: "working",
     platform: "android",
     keySystem: false,
