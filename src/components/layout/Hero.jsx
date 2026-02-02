@@ -1,10 +1,34 @@
-import { TrendingUp, Shield, Zap } from 'lucide-react'
+import { useEffect, useState } from "react"
+import { TrendingUp, Shield, Zap } from "lucide-react"
+import { executorsData } from "../../data/executorsData"
 
 const Hero = () => {
+  const targetCount = executorsData.length
+  const [count, setCount] = useState(0)
+
+  // smooth count-up
+  useEffect(() => {
+    let start = 0
+    const duration = 800 // ms (makin kecil makin cepat)
+    const stepTime = Math.max(Math.floor(duration / targetCount), 20)
+
+    const timer = setInterval(() => {
+      start += 1
+      setCount(start)
+
+      if (start >= targetCount) {
+        clearInterval(timer)
+      }
+    }, stepTime)
+
+    return () => clearInterval(timer)
+  }, [targetCount])
+
   return (
     <section className="hero" id="home">
       <div className="container">
         <div className="hero-content">
+
           {/* Badge */}
           <div className="hero-badge">
             <TrendingUp size={16} />
@@ -20,20 +44,22 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="hero-subtitle">
-            Stay updated with the latest status of all major Roblox executors. 
+            Stay updated with the latest status of all major Roblox executors.
             Check if they're working, patched, or under maintenance.
           </p>
 
           {/* Stats */}
           <div className="hero-stats">
             <div className="stat-item">
-              <div className="stat-value">4+</div>
+              <div className="stat-value">{count}+</div>
               <div className="stat-label">Executors Tracked</div>
             </div>
+
             <div className="stat-item">
               <div className="stat-value">24/7</div>
               <div className="stat-label">Live Monitoring</div>
             </div>
+
             <div className="stat-item">
               <div className="stat-value">100%</div>
               <div className="stat-label">Free Access</div>
@@ -51,6 +77,7 @@ const Hero = () => {
               <span>Instant Updates</span>
             </div>
           </div>
+
         </div>
       </div>
 
