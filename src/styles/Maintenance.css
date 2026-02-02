@@ -21,7 +21,8 @@ html, body {
 
   display: flex;
   justify-content: center;
-  align-items: center;
+
+  padding: 40px 0;
 }
 
 /* ===== BACKGROUND GRID ===== */
@@ -43,10 +44,12 @@ html, body {
   to   { background-position: 200px 200px }
 }
 
-/* ===== CONTENT ===== */
+/* ===== CONTENT (TRUE CENTER) ===== */
 .mnt-content {
   position: relative;
   z-index: 2;
+
+  margin: auto; /* 🔥 KUNCI CENTER */
 
   text-align: center;
   padding: 40px;
@@ -99,6 +102,7 @@ html, body {
   height: 7px;
   background: #00ff8c;
   border-radius: 50%;
+
   animation: blink 1.4s infinite;
 }
 
@@ -122,7 +126,7 @@ html, body {
   transform: translateY(4px);
 }
 
-/* ===== ENTRANCE ANIMATION ===== */
+/* ===== ENTRANCE ===== */
 @keyframes fadeUp {
   from {
     opacity: 0;
