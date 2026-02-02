@@ -2,7 +2,7 @@ export const executorsData = [
   {
     id: 1,
     name: "Delta",
-    icon: "/src/icons/delta-icon.png",
+    icon: "/icons/delta-icon.png",
     status: "working",
     platform: "android",
     keySystem: false,
