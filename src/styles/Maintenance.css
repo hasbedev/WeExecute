@@ -1,0 +1,133 @@
+.mnt-wrapper {
+  min-height: 100vh;
+  background: #050505;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* grid futuristic */
+.mnt-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0 }
+  to { background-position: 200px 200px }
+}
+
+.mnt-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px;
+  animation: fadeUp .9s ease forwards;
+}
+
+/* LOGO MODERN */
+.mnt-logo {
+  width: 140px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 40px rgba(0,255,140,.15));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+
+.mnt-content h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: .4px;
+}
+
+.mnt-content p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #9a9a9a;
+  line-height: 1.6;
+}
+
+/* status text */
+.mnt-status {
+  margin-top: 26px;
+  font-size: 13px;
+  color: #00ff8c;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: .8px;
+}
+
+.mnt-status .dot {
+  width: 7px;
+  height: 7px;
+  background: #00ff8c;
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+}
+
+/* fade text */
+.mnt-status-text {
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.mnt-status-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mnt-status-text.hide {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+@keyframes blink {
+  0%,100% { opacity: .25 }
+  50% { opacity: 1 }
+}
+
+/* entrance */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .mnt-content {
+    padding: 24px;
+  }
+
+  .mnt-logo {
+    width: 110px;
+  }
+
+  .mnt-content h1 {
+    font-size: 22px;
+  }
+
+  .mnt-content p {
+    font-size: 13px;
+  }
+
+  .mnt-bg-grid {
+    background-size: 28px 28px;
+  }
+}
