@@ -11,7 +11,7 @@ const Header = () => {
           {/* Logo */}
           <div className="logo">
             <div className="logo-icon">
-              <img src="/src/icons/WeExecutor.png" alt="WeExecutor Logo" className="logo-image" />
+              <img src="/icons/WeExecutor.png" alt="WeExecutor Logo" className="logo-image" />
             </div>
             <span className="logo-text">We<span className="logo-highlight">Executor</span></span>
           </div>
