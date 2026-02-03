@@ -37,9 +37,18 @@ function App() {
       } else if (activeFilter === 'keySystem') {
         filtered = filtered.filter(e => e.keySystem)
       } else {
-        filtered = filtered.filter(
-          e => e.platform.toLowerCase() === activeFilter
-        )
+        // Platform filters - FIX FOR MULTI-PLATFORM
+        filtered = filtered.filter(e => {
+          // Check if executor has single platform
+          if (e.platform) {
+            return e.platform.toLowerCase() === activeFilter
+          }
+          // Check if executor has multiple platforms
+          if (e.platforms && Array.isArray(e.platforms)) {
+            return e.platforms.some(p => p.toLowerCase() === activeFilter)
+          }
+          return false
+        })
       }
     }
 
