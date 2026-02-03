@@ -6,13 +6,13 @@ export const executorsData = [
     status: "working",
     platform: "android",
     keySystem: false,
-    version: "2.704.1060",
-    robloxVersion: "2.704.1060",
+    version: "2.705.924",
+    robloxVersion: "Delta-2.705.924.apk",
     sunc: 100,
     unc: 99,
-    lastUpdate: "1/23/2026",
+    lastUpdate: "03/02/2026",
     description: "",
-    downloadUrl: "https://delta.filenetwork.vip/file/Delta-2.704.1060-02.apk",
+    downloadUrl: "https://delta.filenetwork.vip/file/Delta-2.705.942.apk",
     discordUrl: "https://discord.com/invite/deltax"
   },
   {
@@ -22,14 +22,14 @@ export const executorsData = [
     status: "working",
     platform: "windows",
     keySystem: false,
-    version: "2.5.9 R1",
+    version: "2.5.9.R1",
     robloxVersion: "version-db4634f0e27d4d36",
     sunc: 100,
     unc: 99,
     lastUpdate: "2/1/2026",
     description: "",
     downloadUrl: "https://bunni.fun/",
-    discordUrl: "https://discord.gg/9DPW2G22cF"
+    discordUrl: "https://cdn.discordapp.com/attachments/1386769745256255600/1467534704872915219/2.5.9.R1.zip?ex=69820d33&is=6980bbb3&hm=bc940cb70f086a06eefc702f3bbf9d930fe3f54fc8e03b6f1502077a0002ebc3&"
   },
   {
     id: 3,
@@ -62,21 +62,5 @@ export const executorsData = [
     description: "",
     downloadUrl: "https://www.xeno.onl/download",
     discordUrl: "https://discord.gg/xe-no"
-  },
-  {
-    id: 5,
-    name: "Ronix",
-    icon: "/icons/ronix-icon.png",
-    status: "working",
-    platform: "android",
-    keySystem: false,
-    version: "2.704.1060",
-    robloxVersion: "2.704.1060",
-    sunc: 0,
-    unc: 0,
-    lastUpdate: "20/01/2026",
-    description: "",
-    downloadUrl: "https://wearedevs.net/d/Ronix",
-    discordUrl: "https://discord.gg/ronixstudios"
   }
 ]
