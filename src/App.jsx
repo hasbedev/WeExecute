@@ -9,7 +9,7 @@ import Maintenance from './components/layout/Maintenance'
 import { executorsData } from './data/executorsData'
 
 // 🔧 tinggal ubah true / false
-const MAINTENANCE_MODE = true
+const MAINTENANCE_MODE = false
 
 function App() {
   // ⛔ langsung hentikan render normal kalau maintenance
