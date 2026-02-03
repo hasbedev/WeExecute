@@ -62,5 +62,33 @@ export const executorsData = [
     description: "",
     downloadUrl: "https://www.xeno.onl/download",
     discordUrl: "https://discord.gg/xe-no"
+  },
+  {
+  id: 5,
+  name: "Ronix",
+  icon: "/icons/ronix-icon.png",
+  status: "working",
+  platforms: ['windows', 'android'], // ← Multi-platform array
+  keySystem: false,
+  description: "Multi-platform executor for Windows & Android",
+  discordUrl: "https://discord.gg/ronixstudios",
+  platformData: {
+      windows: {
+        version: "version-db4634f0e27d4d36",
+        robloxVersion: "version-db4634f0e27d4d36",
+        sunc: 95,
+        unc: 100,
+        lastUpdate: "02/02/2026",
+        downloadUrl: "https://wrdcdn.net/r/154522/1769203129478/RonixInstaller_NEW.exe"
+      },
+      android: {
+        version: "2.705.924",
+        robloxVersion: "2.705.924",
+        sunc: 90,
+        unc: 98,
+        lastUpdate: "03/02/2026",
+        downloadUrl: "https://wrdcdn.net/r/154522/1770071972081/Ronix_32Bits_NEW.apk"
+      }
+    }
   }
 ]
